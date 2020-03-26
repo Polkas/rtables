@@ -13,7 +13,7 @@ jobs:
       - run:
           name: "get package name"
           command: |
-            export pkg=$(echo rtables_*.tar.gz)
+            echo 'export PKG=$(echo rtables_*.tar.gz)' >> $BASH_ENV
             echo ${pkg}
             ls -l
             printenv
@@ -25,6 +25,8 @@ jobs:
       - run:
           name: "install package"
           command: R CMD INSTALL ${pkg}
+      - store_artifacts:
+          path: rtables.Rcheck
             
 workflows:
   version: 2
