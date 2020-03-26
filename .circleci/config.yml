@@ -10,8 +10,20 @@ jobs:
       - run:
           name: "build package"
           command: |
-            ls -al
-            echo '--- works ---'
+            R CMD build rtables
+      - run:
+          name: "get package name"
+          command: |
+            pkg=$(echo rtables_*)
+            echo ${pkg}
+      - run:
+          name: "check package"
+          command: |
+            R CMD check ${pkg}
+      - run:
+          name: "install package"
+          command: |
+            R CMD INSTALL ${pkg}
             
 workflows:
   version: 2
