@@ -11,17 +11,11 @@ jobs:
           name: "build package"
           command: R CMD build rtables
       - run:
-          name: "get package name"
-          command: |
-            echo "export PKG=$(echo rtables_*.tar.gz)" >> $BASH_ENV
-            echo ${PKG}
-            ls -l
-            printenv
+          name: "get package build name"
+          command: echo "export PKG=$(echo rtables_*.tar.gz)" >> $BASH_ENV
       - run:
           name: "check package"
-          command: |
-            echo ${PKG}
-            R CMD check ${PKG}
+          command: R CMD check --no-build-vignettes ${PKG}
       - run:
           name: "install package"
           command: R CMD INSTALL ${PKG}
