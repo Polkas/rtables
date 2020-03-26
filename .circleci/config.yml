@@ -5,7 +5,8 @@ jobs:
     docker:
       - image: rocker/tidyverse:3.6.2
     steps:
-      - checkout
+      - checkout:
+          path: rtables
       - run:
           name: "build package"
           command: |
