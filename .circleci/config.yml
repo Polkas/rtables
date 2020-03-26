@@ -9,22 +9,20 @@ jobs:
           path: rtables
       - run:
           name: "build package"
-          command: |
-            R CMD build rtables
+          command: R CMD build rtables
       - run:
           name: "get package name"
           command: |
             pkg=$(echo rtables_*.tar.gz)
             echo ${pkg}
             ls -l
+            printenv
       - run:
           name: "check package"
-          command: |
-            R CMD check ${pkg}
+          command: R CMD check ${pkg}
       - run:
           name: "install package"
-          command: |
-            R CMD INSTALL ${pkg}
+          command: R CMD INSTALL ${pkg}
             
 workflows:
   version: 2
