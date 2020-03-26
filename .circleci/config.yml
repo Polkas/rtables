@@ -13,18 +13,18 @@ jobs:
       - run:
           name: "get package name"
           command: |
-            echo 'export PKG=$(echo rtables_*.tar.gz)' >> $BASH_ENV
-            echo ${pkg}
+            echo "export PKG=$(echo rtables_*.tar.gz)" >> $BASH_ENV
+            echo ${PKG}
             ls -l
             printenv
       - run:
           name: "check package"
           command: |
-            echo ${pkg}
-            R CMD check ${pkg}
+            echo ${PKG}
+            R CMD check ${PKG}
       - run:
           name: "install package"
-          command: R CMD INSTALL ${pkg}
+          command: R CMD INSTALL ${PKG}
       - store_artifacts:
           path: rtables.Rcheck
             
