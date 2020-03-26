@@ -14,8 +14,9 @@ jobs:
       - run:
           name: "get package name"
           command: |
-            pkg=$(echo rtables_*)
+            pkg=$(echo rtables_*.tar.gz)
             echo ${pkg}
+            ls -l
       - run:
           name: "check package"
           command: |
