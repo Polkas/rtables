@@ -26,7 +26,7 @@ jobs:
           path: rtables.Rcheck
           destination: rtables.Rcheck
       - store_artifacts:
-          path: docs
+          path: rtables/docs
           destination: pkgdown            
 workflows:
   version: 2
