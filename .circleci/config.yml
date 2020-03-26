@@ -4,12 +4,20 @@ jobs:
   build:
     docker:
       - image: rocker/tidyverse:3.6.2
-    branches:
-      only:
-        - circleci-project-setup
     steps:
       - checkout
       - run:
-        name: "build package"
-        command: |
-          ls -al
+          name: "build package"
+          command: |
+            ls -al
+            echo '--- works ---'
+            
+workflows:
+  version: 2
+  buil_check_install:
+    jobs:
+      - build:
+         filters:
+            branches:
+              only:
+                - circleci-project-setup
