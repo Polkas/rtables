@@ -27,7 +27,9 @@ jobs:
           destination: rtables.Rcheck
       - store_artifacts:
           path: rtables/docs
-          destination: pkgdown            
+          destination: pkgdown
+      - store_test_results:
+          path: rtables.Rcheck/tests
 workflows:
   version: 2
   buil_check_install:
