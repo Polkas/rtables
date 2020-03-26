@@ -15,7 +15,7 @@ jobs:
           command: echo "export PKG=$(echo rtables_*.tar.gz)" >> $BASH_ENV
       - run:
           name: "check package"
-          command: R CMD check --no-build-vignettes ${PKG}
+          command: R CMD check --no-manual --no-build-vignettes ${PKG}
       - run:
           name: "install package"
           command: R CMD INSTALL ${PKG}
