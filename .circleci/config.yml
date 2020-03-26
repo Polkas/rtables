@@ -19,9 +19,15 @@ jobs:
       - run:
           name: "install package"
           command: R CMD INSTALL ${PKG}
+      - run:
+          name: "create pkgdown website"
+          command: R -e 'pkgdown::build_site("rtables", devel = FALSE)'
       - store_artifacts:
           path: rtables.Rcheck
-            
+          destination: rtables.Rcheck
+      - store_artifacts:
+          path: docs
+          destination: pkgdown            
 workflows:
   version: 2
   buil_check_install:
